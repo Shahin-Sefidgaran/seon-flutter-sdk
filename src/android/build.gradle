@@ -46,5 +46,8 @@ android {
 }
 
 dependencies {
+    implementation('io.seon.androidsdk:androidsdk:3.2.1') {
+        transitive = true
+    }
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }

@@ -4,12 +4,14 @@ import 'package:seon_plugin/seon_plugin_platform_interface.dart';
 import 'package:seon_plugin/seon_plugin_method_channel.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
-class MockSeonPluginPlatform 
+class MockSeonPluginPlatform
     with MockPlatformInterfaceMixin
     implements SeonPluginPlatform {
-
   @override
   Future<String?> getPlatformVersion() => Future.value('42');
+
+  @override
+  Future<String?> getFingerPrintBase64(String? sessionId, bool isLoggingEnabled) => Future.value('');
 }
 
 void main() {
@@ -23,7 +25,7 @@ void main() {
     SeonPlugin seonPlugin = SeonPlugin();
     MockSeonPluginPlatform fakePlatform = MockSeonPluginPlatform();
     SeonPluginPlatform.instance = fakePlatform;
-  
+
     expect(await seonPlugin.getPlatformVersion(), '42');
   });
 }

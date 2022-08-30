@@ -14,7 +14,7 @@ abstract class SeonPluginPlatform extends PlatformInterface {
   ///
   /// Defaults to [MethodChannelSeonPlugin].
   static SeonPluginPlatform get instance => _instance;
-  
+
   /// Platform-specific implementations should set this with their own
   /// platform-specific class that extends [SeonPluginPlatform] when
   /// they register themselves.
@@ -26,4 +26,8 @@ abstract class SeonPluginPlatform extends PlatformInterface {
   Future<String?> getPlatformVersion() {
     throw UnimplementedError('platformVersion() has not been implemented.');
   }
+
+  Future<String?> getFingerPrintBase64(
+          String? sessionId, bool isLoggingEnabled) =>
+      _instance.getFingerPrintBase64(sessionId, isLoggingEnabled);
 }

@@ -14,4 +14,14 @@ class MethodChannelSeonPlugin extends SeonPluginPlatform {
     final version = await methodChannel.invokeMethod<String>('getPlatformVersion');
     return version;
   }
+
+  @override
+  Future<String?> getFingerPrintBase64(String? sessionId, bool isLoggingEnabled) async {
+    final String? result = await methodChannel.invokeMethod('getFingerPrint', {
+      "sessionId": sessionId,
+      "isLoggingEnabled": isLoggingEnabled
+    });
+
+    return result;
+  }
 }
