@@ -10,12 +10,6 @@ class MethodChannelSeonPlugin extends SeonPluginPlatform {
   final methodChannel = const MethodChannel('seon_plugin');
 
   @override
-  Future<String?> getPlatformVersion() async {
-    final version = await methodChannel.invokeMethod<String>('getPlatformVersion');
-    return version;
-  }
-
-  @override
   Future<String?> getFingerPrintBase64(String? sessionId, bool isLoggingEnabled) async {
     final String? result = await methodChannel.invokeMethod('getFingerPrint', {
       "sessionId": sessionId,

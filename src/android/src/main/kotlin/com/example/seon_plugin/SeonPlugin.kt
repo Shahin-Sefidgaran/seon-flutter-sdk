@@ -28,14 +28,11 @@ class SeonPlugin : FlutterPlugin, MethodCallHandler {
 
     override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) {
         when (call.method) {
-            "getPlatformVersion" -> {
-                result.success("Android ${android.os.Build.VERSION.RELEASE}")
-            }
             "getFingerPrint" -> {
-                val sessionid: String = call.argument<String>("sessionId") as String
+                val sessionId: String = call.argument<String>("sessionId") as String
                 val isLoggingEnabled: Boolean = call.argument<Boolean>("isLoggingEnabled") as Boolean
 
-                val fingerPrintBase64: String = getSeonFingerPrint(sessionid, isLoggingEnabled)
+                val fingerPrintBase64: String = getSeonFingerPrint(sessionId, isLoggingEnabled)
 
                 result.success(fingerPrintBase64)
             }
@@ -60,6 +57,7 @@ class SeonPlugin : FlutterPlugin, MethodCallHandler {
 
         val result = try {
             seonFingerprint.fingerprintBase64
+
         } catch (e: SeonException) {
             e.printStackTrace()
             throw Throwable(e)
