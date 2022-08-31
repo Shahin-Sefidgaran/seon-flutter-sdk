@@ -32,9 +32,9 @@ class _MyAppState extends State<MyApp> {
     // Platform messages may fail, so we use a try/catch PlatformException.
     // We also handle the message potentially returning null.
     try {
-      fingerPrintBase64 =
-          await _seonPlugin.getFingerPrintBase64(sessionId: sessionid, isLoggingEnabled: true) ??
-              'Unknown fingerprint';
+      fingerPrintBase64 = await _seonPlugin.getFingerPrintBase64(
+              sessionId: sessionid, isLoggingEnabled: true) ??
+          'Unknown fingerprint';
     } on PlatformException {
       fingerPrintBase64 = 'Failed to get fingerprint.';
     }

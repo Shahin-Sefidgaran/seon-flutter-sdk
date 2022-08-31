@@ -10,11 +10,10 @@ class MethodChannelSeonPlugin extends SeonPluginPlatform {
   final methodChannel = const MethodChannel('seon_plugin');
 
   @override
-  Future<String?> getFingerPrintBase64(String? sessionId, bool isLoggingEnabled) async {
-    final String? result = await methodChannel.invokeMethod('getFingerPrint', {
-      "sessionId": sessionId,
-      "isLoggingEnabled": isLoggingEnabled
-    });
+  Future<String?> getFingerPrintBase64(
+      String? sessionId, bool isLoggingEnabled) async {
+    final String? result = await methodChannel.invokeMethod('getFingerPrint',
+        {"sessionId": sessionId, "isLoggingEnabled": isLoggingEnabled});
 
     return result;
   }

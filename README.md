@@ -8,7 +8,7 @@ Learn about SEON Device Fingerprinting SDK at [SEON DOCS](https://docs.seon.io/g
 
 First of all you need to add seon_plugin in your project. In order to do that, follow [this guide](https://pub.dev/packages/seon_plugin/install).
 
-We suggest you to check [example](https://github.com/Shahin-Sefidgaran/seon-flutter-sdk) source code.
+We suggest you to check [example](https://github.com/Shahin-Sefidgaran/seon-flutter-sdk/tree/main/src/example) source code.
 
 ## Use Flutter Plugin
 
