@@ -1,5 +1,7 @@
 # seon_plugin
 
+[![pub package](https://img.shields.io/pub/v/seon_plugin.svg)](https://pub.dartlang.org/packages/seon_plugin)
+
 [SEON Fraud Prevention](https://seon.io/) - Device Fingerprinting SDK for Flutter.
 
 Learn about SEON Device Fingerprinting SDK at [SEON DOCS](https://docs.seon.io/getting-started/device-fingerprinting?_ga=2.234703388.388222201.1661599912-60975941.1661413923)
