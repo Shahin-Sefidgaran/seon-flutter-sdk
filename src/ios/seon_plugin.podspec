@@ -9,9 +9,9 @@ Pod::Spec.new do |s|
   s.description      = <<-DESC
 SEON Anti Fraud Flutter Plugin
                        DESC
-  s.homepage         = 'LinkedIn Page'
+  s.homepage         = 'https://www.linkedin.com/in/shahin-sefidgaran-484525174/'
   s.license          = { :file => '../LICENSE' }
-  s.author           = { 'Shahin' => 'email@example.com' }
+  s.author           = { 'Shahin Sefidgaran' => 'shaahin.sefidgaran@gmail.com' }
   s.source           = { :path => '.' }
   s.source_files = 'Classes/**/*'
   s.dependency 'Flutter'

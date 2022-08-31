@@ -1,15 +1,21 @@
 # seon_plugin
 
-A new Flutter plugin project.
+[SEON Fraud Prevention](https://seon.io/) - Device Fingerprinting SDK for Flutter.
+
+Learn about SEON Device Fingerprinting SDK at [SEON DOCS](https://docs.seon.io/getting-started/device-fingerprinting?_ga=2.234703388.388222201.1661599912-60975941.1661413923)
 
 ## Getting Started
 
-This project is a starting point for a Flutter
-[plug-in package](https://flutter.dev/developing-packages/),
-a specialized package that includes platform-specific implementation code for
-Android and/or iOS.
+First of all you need to add seon_plugin in your project. In order to do that, follow [this guide](https://pub.dev/packages/seon_plugin/install).
 
-For help getting started with Flutter development, view the
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+We suggest you to check [example](https://github.com/Shahin-Sefidgaran/seon-flutter-sdk) source code.
+
+## Use Flutter Plugin
+
+```dart
+    var fingerprintBase64 = await SeonPlugin().getFingerPrintBase64(
+        sessionId: '<Your Session id>', // Any id for identifying your session with seon.
+        isLoggingEnabled: true // True if you want the fingerprint response to be logged.
+        );
+```
 

@@ -33,7 +33,7 @@ class _MyAppState extends State<MyApp> {
     // We also handle the message potentially returning null.
     try {
       fingerPrintBase64 =
-          await _seonPlugin.getFingerPrintBase64(sessionid, true) ??
+          await _seonPlugin.getFingerPrintBase64(sessionId: sessionid, isLoggingEnabled: true) ??
               'Unknown fingerprint';
     } on PlatformException {
       fingerPrintBase64 = 'Failed to get fingerprint.';
