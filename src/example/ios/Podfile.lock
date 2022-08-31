@@ -1,0 +1,29 @@
+PODS:
+  - Flutter (1.0.0)
+  - seon_plugin (0.0.1):
+    - Flutter
+    - SeonSDK (= 3.0.8)
+  - SeonSDK (3.0.8)
+
+DEPENDENCIES:
+  - Flutter (from `Flutter`)
+  - seon_plugin (from `.symlinks/plugins/seon_plugin/ios`)
+
+SPEC REPOS:
+  trunk:
+    - SeonSDK
+
+EXTERNAL SOURCES:
+  Flutter:
+    :path: Flutter
+  seon_plugin:
+    :path: ".symlinks/plugins/seon_plugin/ios"
+
+SPEC CHECKSUMS:
+  Flutter: 50d75fe2f02b26cc09d224853bb45737f8b3214a
+  seon_plugin: c27008a94104159bf780e0f1073f3bde97c99e58
+  SeonSDK: 878d512385441006a973f0aa848f70acabe25802
+
+PODFILE CHECKSUM: 3915fc7425c79fdcde0b28550364d436dd92e592
+
+COCOAPODS: 1.11.3
