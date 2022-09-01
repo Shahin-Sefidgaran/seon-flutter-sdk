@@ -1,15 +1,15 @@
-## 0.0.1
+## 0.0.4
 
-* SEON Anti Fraud Flutter Plugin
-
-## 0.0.2
-
-* Update Readme
+* Fixed description in pubspec.yaml file
 
 ## 0.0.3
 
 * Update Readme
 
-## 0.0.4
+## 0.0.2
 
-* Fixed description in pubspec.yaml file
+* Update Readme
+
+## 0.0.1
+
+* SEON Anti Fraud Flutter Plugin
