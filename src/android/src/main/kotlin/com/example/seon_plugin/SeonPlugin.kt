@@ -10,6 +10,7 @@ import io.flutter.plugin.common.MethodChannel.MethodCallHandler
 import io.flutter.plugin.common.MethodChannel.Result
 import io.seon.androidsdk.exception.SeonException
 import io.seon.androidsdk.service.SeonBuilder
+import kotlinx.coroutines.*
 
 /** SeonPlugin */
 class SeonPlugin : FlutterPlugin, MethodCallHandler {
@@ -19,6 +20,7 @@ class SeonPlugin : FlutterPlugin, MethodCallHandler {
     /// when the Flutter Engine is detached from the Activity
     private lateinit var channel: MethodChannel
     private lateinit var applicationContext: Context
+    private val mainScope = CoroutineScope(Dispatchers.Main)
 
     override fun onAttachedToEngine(@NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
         channel = MethodChannel(flutterPluginBinding.binaryMessenger, "seon_plugin")
@@ -27,41 +29,39 @@ class SeonPlugin : FlutterPlugin, MethodCallHandler {
     }
 
     override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) {
-        when (call.method) {
-            "getFingerPrint" -> {
-                val sessionId: String = call.argument<String>("sessionId") as String
-                val isLoggingEnabled: Boolean = call.argument<Boolean>("isLoggingEnabled") as Boolean
+        mainScope.launch {
+            when (call.method) {
+                "getFingerPrint" -> {
+                    val sessionId: String = call.argument<String>("sessionId") as String
+                    val isLoggingEnabled: Boolean =
+                        call.argument<Boolean>("isLoggingEnabled") as Boolean
+//Build with parameters
+                    val seonFingerprint =
+                        SeonBuilder().withContext(applicationContext).withSessionId(sessionId)
+                            .build()
 
-                val fingerPrintBase64: String = getSeonFingerPrint(sessionId, isLoggingEnabled)
+// Enable logging
+                    seonFingerprint.setLoggingEnabled(isLoggingEnabled)
+                    withContext(Dispatchers.Default) {
+                        try {
+                            seonFingerprint.getFingerprintBase64 { seonResult: String? ->
+                                result.success(seonResult)
+                            }
 
-                result.success(fingerPrintBase64)
-            }
-            else -> {
-                result.notImplemented()
+                        } catch (e: SeonException) {
+                            e.printStackTrace()
+                            throw Throwable(e)
+                        }
+                    }
+                }
+                else -> {
+                    result.notImplemented()
+                }
             }
         }
     }
 
     override fun onDetachedFromEngine(@NonNull binding: FlutterPlugin.FlutterPluginBinding) {
         channel.setMethodCallHandler(null)
-    }
-
-    private fun getSeonFingerPrint(session_id: String, isLoggingEnabled: Boolean): String {
-
-// Build with parameters
-        val seonFingerprint =
-            SeonBuilder().withContext(applicationContext).withSessionId(session_id).build()
-
-// Enable logging
-        seonFingerprint.setLoggingEnabled(isLoggingEnabled)
-
-        val result = try {
-            seonFingerprint.fingerprintBase64
-
-        } catch (e: SeonException) {
-            e.printStackTrace()
-            throw Throwable(e)
-        }
-        return result
     }
 }
