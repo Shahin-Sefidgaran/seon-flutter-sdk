@@ -10,7 +10,6 @@ import io.flutter.plugin.common.MethodChannel.MethodCallHandler
 import io.flutter.plugin.common.MethodChannel.Result
 import io.seon.androidsdk.exception.SeonException
 import io.seon.androidsdk.service.SeonBuilder
-import kotlinx.coroutines.*
 
 /** SeonPlugin */
 class SeonPlugin : FlutterPlugin, MethodCallHandler {
@@ -20,7 +19,6 @@ class SeonPlugin : FlutterPlugin, MethodCallHandler {
     /// when the Flutter Engine is detached from the Activity
     private lateinit var channel: MethodChannel
     private lateinit var applicationContext: Context
-    private val mainScope = CoroutineScope(Dispatchers.Main)
 
     override fun onAttachedToEngine(@NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
         channel = MethodChannel(flutterPluginBinding.binaryMessenger, "seon_plugin")
@@ -29,17 +27,15 @@ class SeonPlugin : FlutterPlugin, MethodCallHandler {
     }
 
     override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) {
-        mainScope.launch {
-            when (call.method) {
-                "getFingerPrint" -> {
-                    val sessionId: String = call.argument<String>("sessionId") as String
-                    val isLoggingEnabled: Boolean =
-                        call.argument<Boolean>("isLoggingEnabled") as Boolean
-                    getSeonFingerPrint(sessionId, isLoggingEnabled, result)
-                }
-                else -> {
-                    result.notImplemented()
-                }
+        when (call.method) {
+            "getFingerPrint" -> {
+                val sessionId: String = call.argument<String>("sessionId") as String
+                val isLoggingEnabled: Boolean =
+                    call.argument<Boolean>("isLoggingEnabled") as Boolean
+                getSeonFingerPrint(sessionId, isLoggingEnabled, result)
+            }
+            else -> {
+                result.notImplemented()
             }
         }
     }
@@ -63,7 +59,6 @@ class SeonPlugin : FlutterPlugin, MethodCallHandler {
 
         } catch (e: SeonException) {
             e.printStackTrace()
-            throw Throwable(e)
         }
     }
 
