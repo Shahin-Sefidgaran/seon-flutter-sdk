@@ -1,3 +1,7 @@
+## 1.0.0
+
+* Android upgraded to SEON sdk 4.1.0
+
 ## 0.0.4
 
 * Fixed description in pubspec.yaml file

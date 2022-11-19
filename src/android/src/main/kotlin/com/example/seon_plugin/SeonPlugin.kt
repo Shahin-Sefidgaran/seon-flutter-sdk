@@ -35,29 +35,35 @@ class SeonPlugin : FlutterPlugin, MethodCallHandler {
                     val sessionId: String = call.argument<String>("sessionId") as String
                     val isLoggingEnabled: Boolean =
                         call.argument<Boolean>("isLoggingEnabled") as Boolean
-//Build with parameters
-                    val seonFingerprint =
-                        SeonBuilder().withContext(applicationContext).withSessionId(sessionId)
-                            .build()
-
-// Enable logging
-                    seonFingerprint.setLoggingEnabled(isLoggingEnabled)
-                    withContext(Dispatchers.Default) {
-                        try {
-                            seonFingerprint.getFingerprintBase64 { seonResult: String? ->
-                                result.success(seonResult)
-                            }
-
-                        } catch (e: SeonException) {
-                            e.printStackTrace()
-                            throw Throwable(e)
-                        }
-                    }
+                    getSeonFingerPrint(sessionId, isLoggingEnabled, result)
                 }
                 else -> {
                     result.notImplemented()
                 }
             }
+        }
+    }
+
+    private fun getSeonFingerPrint(
+        sessionId: String,
+        isLoggingEnabled: Boolean,
+        @NonNull result: Result
+    ) {
+        //Build with parameters
+        val sfp =
+            SeonBuilder().withContext(applicationContext).withSessionId(sessionId)
+                .build()
+
+        // Enable logging
+        sfp.setLoggingEnabled(isLoggingEnabled)
+        try {
+            sfp.getFingerprintBase64 { seonResult: String? ->
+                result.success(seonResult)
+            }
+
+        } catch (e: SeonException) {
+            e.printStackTrace()
+            throw Throwable(e)
         }
     }
 
