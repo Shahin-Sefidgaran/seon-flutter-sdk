@@ -10,7 +10,7 @@ Learn about SEON Device Fingerprinting SDK at [SEON DOCS](https://docs.seon.io/g
 
 First of all you need to add seon_plugin in your project. In order to do that, follow [this guide](https://pub.dev/packages/seon_plugin/install).
 
-We suggest you to check [example](https://github.com/Shahin-Sefidgaran/seon-flutter-sdk) source code.
+We suggest you to check [example](https://github.com/Shahin-Sefidgaran/seon-flutter-sdk/tree/main/src/example) source code.
 
 ## Use Flutter Plugin
 
@@ -21,3 +21,8 @@ We suggest you to check [example](https://github.com/Shahin-Sefidgaran/seon-flut
         );
 ```
 
+## Add SEON framework to your iOS project
+
+To avoid getting framework not loaded runtime exception, you must add SEONSDK.xcframework into your iOS Targets Runner -> General -> Frameworks, Libraries, and Embedded Content.
+
+Open your iOS project (ios/Runner.xcworkspace) in XCode, from left side menu (project navigator) select Runner, then in TARGETS section seect Runner -> in General tab look for 'Frameworks, Libraries, and Embedded Content' section and add (+) SeonSDK.xcframework.

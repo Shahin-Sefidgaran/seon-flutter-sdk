@@ -20,3 +20,9 @@ We suggest you to check [example](https://github.com/Shahin-Sefidgaran/seon-flut
         isLoggingEnabled: true // True if you want the fingerprint response to be logged.
         );
 ```
+
+## Add SEON framework to your iOS project
+
+To avoid getting framework not loaded runtime exception, you must add SEONSDK.xcframework into your iOS Targets Runner -> General -> Frameworks, Libraries, and Embedded Content.
+
+Open your iOS project (ios/Runner.xcworkspace) in XCode, from left side menu (project navigator) select Runner, then in TARGETS section seect Runner -> in General tab look for 'Frameworks, Libraries, and Embedded Content' section and add (+) SeonSDK.xcframework.
