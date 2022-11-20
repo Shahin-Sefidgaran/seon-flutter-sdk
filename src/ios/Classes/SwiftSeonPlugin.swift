@@ -18,14 +18,14 @@ public class SwiftSeonPlugin: NSObject, FlutterPlugin {
                 result(false)
                 return
             }
-            result(getSeonFingerPrint(session_id: sessionId!, isLoggingEnabled: isLoggingEnabled!))
-        }
+        getSeonFingerPrint(session_id: sessionId!, isLoggingEnabled: isLoggingEnabled!, completionHandler: {(seonFingerprint) in result(seonFingerprint)}
+        )
+    }
   }
 
-  func getSeonFingerPrint(session_id: String?, isLoggingEnabled: Bool) -> String? {
-
+    func getSeonFingerPrint(session_id: String?, isLoggingEnabled: Bool, completionHandler: @escaping (String?) -> Void) -> Void {
     let seonfp = SeonFingerprint()
-    var seonFingerprintResult : String?
+      
     // Enable logging
     seonfp.setLoggingEnabled(isLoggingEnabled)
 
@@ -33,6 +33,8 @@ public class SwiftSeonPlugin: NSObject, FlutterPlugin {
     seonfp.sessionId = session_id
 
     // Compute fingerprint
-    return seonfp.fingerprintBase64()
+    seonfp.fingerprintBase64 { (seonFingerprint:String?) in
+        completionHandler(seonFingerprint)
+    }
   }
 }
