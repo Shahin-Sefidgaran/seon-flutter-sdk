@@ -41,12 +41,12 @@ android {
     }
 
     defaultConfig {
-        minSdkVersion 16
+        minSdkVersion 19
     }
 }
 
 dependencies {
-    implementation('io.seon.androidsdk:androidsdk:3.2.1') {
+    implementation('io.seon.androidsdk:androidsdk:4.1.0') {
         transitive = true
     }
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"

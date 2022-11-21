@@ -17,7 +17,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  String? _fingerPrintBase64;
+  String _fingerPrintBase64 = "Fetching fingerprint...";
   var uuid = const Uuid();
   final _seonPlugin = SeonPlugin();
 

@@ -4,7 +4,7 @@
 #
 Pod::Spec.new do |s|
   s.name             = 'seon_plugin'
-  s.version          = '0.0.1'
+  s.version          = '1.0.0'
   s.summary          = 'SEON Flutter Plugin Project.'
   s.description      = <<-DESC
 SEON Anti Fraud Flutter Plugin
@@ -15,7 +15,8 @@ SEON Anti Fraud Flutter Plugin
   s.source           = { :path => '.' }
   s.source_files = 'Classes/**/*'
   s.dependency 'Flutter'
-  s.dependency 'SeonSDK', '= 3.0.8'
+  s.dependency 'SeonSDK', '~> 4.0.0'
+  s.static_framework = true
   s.platform = :ios, '9.0'
 
   # Flutter.framework does not contain a i386 slice.

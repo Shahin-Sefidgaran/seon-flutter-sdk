@@ -30,11 +30,9 @@ class SeonPlugin : FlutterPlugin, MethodCallHandler {
         when (call.method) {
             "getFingerPrint" -> {
                 val sessionId: String = call.argument<String>("sessionId") as String
-                val isLoggingEnabled: Boolean = call.argument<Boolean>("isLoggingEnabled") as Boolean
-
-                val fingerPrintBase64: String = getSeonFingerPrint(sessionId, isLoggingEnabled)
-
-                result.success(fingerPrintBase64)
+                val isLoggingEnabled: Boolean =
+                    call.argument<Boolean>("isLoggingEnabled") as Boolean
+                getSeonFingerPrint(sessionId, isLoggingEnabled, result)
             }
             else -> {
                 result.notImplemented()
@@ -42,26 +40,29 @@ class SeonPlugin : FlutterPlugin, MethodCallHandler {
         }
     }
 
-    override fun onDetachedFromEngine(@NonNull binding: FlutterPlugin.FlutterPluginBinding) {
-        channel.setMethodCallHandler(null)
-    }
+    private fun getSeonFingerPrint(
+        sessionId: String,
+        isLoggingEnabled: Boolean,
+        @NonNull result: Result
+    ) {
+        //Build with parameters
+        val sfp =
+            SeonBuilder().withContext(applicationContext).withSessionId(sessionId)
+                .build()
 
-    private fun getSeonFingerPrint(session_id: String, isLoggingEnabled: Boolean): String {
-
-// Build with parameters
-        val seonFingerprint =
-            SeonBuilder().withContext(applicationContext).withSessionId(session_id).build()
-
-// Enable logging
-        seonFingerprint.setLoggingEnabled(isLoggingEnabled)
-
-        val result = try {
-            seonFingerprint.fingerprintBase64
+        // Enable logging
+        sfp.setLoggingEnabled(isLoggingEnabled)
+        try {
+            sfp.getFingerprintBase64 { seonResult: String? ->
+                result.success(seonResult)
+            }
 
         } catch (e: SeonException) {
             e.printStackTrace()
-            throw Throwable(e)
         }
-        return result
+    }
+
+    override fun onDetachedFromEngine(@NonNull binding: FlutterPlugin.FlutterPluginBinding) {
+        channel.setMethodCallHandler(null)
     }
 }
