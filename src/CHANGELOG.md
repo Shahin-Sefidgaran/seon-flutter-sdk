@@ -1,6 +1,9 @@
 ## 1.0.0
 
-* Android upgraded to SEON sdk 4.1.0
+* 
+    Upgrade Android SEON SDK to 4.1.0
+    Upgrade iOS SEON SDK to 4.0.0
+    Update example
 
 ## 0.0.4
 
