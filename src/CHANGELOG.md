@@ -1,4 +1,4 @@
-## 1.0.0
+## 1.0.1
 
 * Upgrade Android SEON SDK to 4.1.0
 * Upgrade iOS SEON SDK to 4.0.0
