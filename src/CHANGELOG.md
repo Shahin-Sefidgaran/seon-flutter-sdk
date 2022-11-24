@@ -1,3 +1,7 @@
+## 1.0.2
+
+* Update Readme
+
 ## 1.0.1
 
 * Upgrade Android SEON SDK to 4.1.0
