@@ -20,3 +20,7 @@ We suggest you to check [example](https://github.com/Shahin-Sefidgaran/seon-flut
         isLoggingEnabled: true // True if you want the fingerprint response to be logged.
         );
 ```
+
+## Version 2.0.0 Breaking Changes on Android
+
+The newly computed device hash won't be compatible with previous versions.
