@@ -21,6 +21,6 @@ We suggest you to check [example](https://github.com/Shahin-Sefidgaran/seon-flut
         );
 ```
 
-## Version 2.0.0 Breaking Changes on Android
+## Version 3.0.0 Breaking Changes on Android
 
-The newly computed device hash won't be compatible with previous versions.
+device_hash field is calculated differently, resulting in different values for a given device. This means these values are going to break between versions.
