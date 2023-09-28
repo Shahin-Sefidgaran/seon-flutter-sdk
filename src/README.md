@@ -23,4 +23,4 @@ We suggest you to check [example](https://github.com/Shahin-Sefidgaran/seon-flut
 
 ## Version 3.0.0 Breaking Changes on Android
 
-device_hash field is calculated differently, resulting in different values for a given device. This means these values are going to break between versions.
+`device_hash` field is calculated differently, resulting in different values for a given device. This means these values are going to break between versions.
