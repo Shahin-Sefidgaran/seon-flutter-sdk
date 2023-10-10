@@ -1,6 +1,7 @@
 ## 3.0.0
 
 * Upgrade Android SEON SDK to 6.0.2
+* Upgrade iOS SEON SDK to 5.0.0
 * Update Readme
 
 ## 2.0.0
