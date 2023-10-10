@@ -4,7 +4,7 @@
 #
 Pod::Spec.new do |s|
   s.name             = 'seon_plugin'
-  s.version          = '1.0.0'
+  s.version          = '3.0.0'
   s.summary          = 'SEON Flutter Plugin Project.'
   s.description      = <<-DESC
 SEON Anti Fraud Flutter Plugin
@@ -15,9 +15,8 @@ SEON Anti Fraud Flutter Plugin
   s.source           = { :path => '.' }
   s.source_files = 'Classes/**/*'
   s.dependency 'Flutter'
-  s.dependency 'SeonSDK', '~> 4.0.0'
-  s.static_framework = true
-  s.platform = :ios, '9.0'
+  s.dependency 'SeonSDK', '~> 5.0.0'
+  s.platform = :ios, '11.0'
 
   # Flutter.framework does not contain a i386 slice.
   s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES', 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'i386' }

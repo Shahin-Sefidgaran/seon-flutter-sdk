@@ -24,17 +24,21 @@ public class SwiftSeonPlugin: NSObject, FlutterPlugin {
   }
 
     func getSeonFingerPrint(session_id: String?, isLoggingEnabled: Bool, completionHandler: @escaping (String?) -> Void) -> Void {
-    let seonfp = SeonFingerprint()
+    let seonfp = SEONFingerprint()
       
     // Enable logging
-    seonfp.setLoggingEnabled(isLoggingEnabled)
+    seonfp.setLoggingEnabled(loggingEnabled: isLoggingEnabled)
 
     // Set session_id
     seonfp.sessionId = session_id
 
-    // Compute fingerprint
-    seonfp.fingerprintBase64 { (seonFingerprint:String?) in
-        completionHandler(seonFingerprint)
+    // Compute fingerprint asynchronously
+    seonfp.getFingerprintBase64 { seonFingerprint, error in
+        if let error{
+            print(error.localizedDescription)
+        } else{
+            completionHandler(seonFingerprint);
+        }
     }
   }
 }
