@@ -16,7 +16,6 @@ SEON Anti Fraud Flutter Plugin
   s.source_files = 'Classes/**/*'
   s.dependency 'Flutter'
   s.dependency 'SeonSDK', '~> 5.0.0'
-  s.static_framework = true
   s.platform = :ios, '11.0'
 
   # Flutter.framework does not contain a i386 slice.
